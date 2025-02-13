@@ -12,7 +12,7 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose.update_quality()
         sulfuras_item = items[0]
         self.assertEqual(80, sulfuras_item.quality)
-        self.assertEqual(4, sulfuras_item.sell_in)
+        self.assertEqual(5, sulfuras_item.sell_in)
         self.assertEqual("Sulfuras", sulfuras_item.name)
 
     # example of test that checks for syntax errors
@@ -30,25 +30,27 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         
-        self.assertEqual(items[0].quality, 8)  
-        self.assertEqual(items[0].sell_in,3)  
+        self.assertEqual(items[0].quality, 9)  
+        self.assertEqual(items[0].sell_in,4)  
         
-    # #Second logical errors
+        
+        
+    # # #Second logical errors
     def test_aged_brie_increases_in_quality(self):
         items = [Item("Aged Brie", 2, 10)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
 
-        self.assertEqual(items[0].quality, 12)  
+        self.assertEqual(items[0].quality, 11)  
         self.assertEqual(items[0].sell_in, 1)  
         
-    # Third logical errors
+    # # Third logical errors
     def test_backstage_passes_quality_drops_to_zero(self):
         items = [Item("Backstage passes to a TAFKAL80ETC concert", 0, 30)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
 
-        self.assertEqual(items[0].quality, 29)  
+        self.assertEqual(items[0].quality, 0)  
     
     # Fourth logical errors
     def test_conjured_mona_cake_decrease_in_quality(self):
@@ -56,10 +58,10 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         
-        self.assertEqual(items[0].quality, 25)
+        self.assertEqual(items[0].quality, 28)
     
     
-    #Syntax error
+    # #Syntax error
     def test_gilded_rose_list_all_items_again(self):
         items = [Item("Aged Brie", 5, 80)]
         gilded_rose = GildedRose(items)
@@ -70,7 +72,7 @@ class GildedRoseTest(unittest.TestCase):
     def test_gilded_rose_conjured_mona_cake(self):
         items = [Item("Conjured Mona Cake", 5, 80)]
         gilded_rose = GildedRose(items)
-        all_items = gilded_rose.sell_item()
+        all_items = gilded_rose.get_item()
         self.assertEqual(["Conjured Mona Cake"], all_items)
 
 if __name__ == '__main__':
